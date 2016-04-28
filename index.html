@@ -73,7 +73,7 @@ function generateRegExObj(searchQuery, flags) {
     //      ["one", "two", ""three four"", "aaa", ""bbb"", "ccc", "#123"]
 
     var matches2 = [];
-    var words = _.each( matches , function (item, k) {
+    _.each( matches , function (item, k) {
         var isLikeQuoted = /([^ ]*)("[^"]+")([^ ]*)/g.test(item);
         if (debug) console.log('islikequoted: ', isLikeQuoted );
         var isQuoted = false;
