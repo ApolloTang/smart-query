@@ -130,7 +130,7 @@ function generateRegExObj(searchQuery, flags) {
     var generatedRegEx;
     var firstStart = '(\\s|^|#)';
     var start = '(\\s|^|#)';
-    var end = '';
+    var end = '(\\s|$)';
     var finalEnd = '';
 
     if (words.length >= 2) {
@@ -141,7 +141,7 @@ function generateRegExObj(searchQuery, flags) {
         if (debug) console.log('wordsBeforeLast: ', wordsBeforeLast);
         if (debug) console.log('wordLast: ', wordLast);
 
-        generatedRegEx = '(?=.*?'+firstStart+wordsBeforeLast.join(  end+')(?=.*?'+start ) + end+')(?=.*?'+start+wordLast+finalEnd+').*$';
+        generatedRegEx = '(?=.*?'+firstStart+wordsBeforeLast.join(  end+')(?=.*?'+start ) + end+')(?=.*?'+start+wordLast+finalEnd+')';
     } else if (words.length === 1 ) {
         // Generate regular expression string that look like:
         //      /(?=.*?(\s|^|#)one).*$/gim
