@@ -135,19 +135,19 @@ function generateRegExObj(searchQuery, flags) {
 
     if (words.length >= 2) {
         // Generate regular expression string that look like:
-        //  /(?=.*?(\s|^|#)one)(?=.*?(\s|^|#)two)(?=.*?(\s|^|#)123)(?=.*?(\s|^|#)three).*$/gim
+        //  /(?=.*(\s|^|#)one(\s|$))(?=.*(\s|^|#)two(\s|$))(?=.*(\s|^|#)three)/gim?
         var wordLast = words.splice(words.length-1);  // We have ability to treat final word differently, if we want to
         var wordsBeforeLast = words; // array for words without final word
         if (debug) console.log('wordsBeforeLast: ', wordsBeforeLast);
         if (debug) console.log('wordLast: ', wordLast);
 
-        generatedRegEx = '(?=.*?'+firstStart+wordsBeforeLast.join(  end+')(?=.*?'+start ) + end+')(?=.*?'+start+wordLast+finalEnd+')';
+        generatedRegEx = '(?=.*'+firstStart+wordsBeforeLast.join(  end+')(?=.*'+start ) + end+')(?=.*'+start+wordLast+finalEnd+')';
     } else if (words.length === 1 ) {
         // Generate regular expression string that look like:
-        //      /(?=.*?(\s|^|#)one).*$/gim
+        //      /(?=.*(\s|^|#)one).*$/gim
         var onlyWord = words[0];
         if (debug) console.log('onlyWord: ', onlyWord);
-        generatedRegEx = '(?=.*?'+firstStart+onlyWord+finalEnd+').*$';
+        generatedRegEx = '(?=.*'+firstStart+onlyWord+finalEnd+').*$';
     } else {
         generatedRegEx = '.^'; // match nothing
     }
