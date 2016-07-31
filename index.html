@@ -143,11 +143,11 @@ function generateRegExObj(searchQuery, flags) {
 
         generatedRegEx = '(?=.*'+firstStart+wordsBeforeLast.join(  end+')(?=.*'+start ) + end+')(?=.*'+start+wordLast+finalEnd+')';
     } else if (words.length === 1 ) {
-        // Generate regular expression string that look like:
-        //      /(?=.*(\s|^|#)one).*$/gim
+        // use simple search when there is only one word, such it can match any part of the word.
+        // eg. a search query of "ere" will match and string contain "ere"
         var onlyWord = words[0];
         if (debug) console.log('onlyWord: ', onlyWord);
-        generatedRegEx = '(?=.*'+firstStart+onlyWord+finalEnd+').*$';
+        generatedRegEx = onlyWord;
     } else {
         generatedRegEx = '.^'; // match nothing
     }
