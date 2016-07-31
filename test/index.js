@@ -19,14 +19,32 @@ var  searchQuery = '';
 var  note = '';
 
 
+var stringToSearch_standard = '#123 the #qu#ick fox jump over the lazy $10.00 dog #1945';
+
 note = '[1]';
-stringToSearch = 'Hello world';
-searchQuery = 'Hello';
+stringToSearch = stringToSearch_standard;
+searchQuery = '#123';
 assert.equal(search(searchQuery, stringToSearch, note), true);
 
 note = '[2]';
-stringToSearch = 'Hello world';
-searchQuery = 'world hello';
+stringToSearch = stringToSearch_standard;
+searchQuery = 'the #123';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+note = '[3]';
+stringToSearch = stringToSearch_standard;
+searchQuery = 'the "jump over the" #123';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+note = '[4] partial';
+stringToSearch = stringToSearch_standard;
+searchQuery = 'og';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+
+note = '[5] partial at the end';
+stringToSearch = stringToSearch_standard;
+searchQuery = '45';
 assert.equal(search(searchQuery, stringToSearch, note), true);
 
 console.log('=========================================== test done');
