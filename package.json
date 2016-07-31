@@ -1,28 +1,34 @@
 {
   "name": "smart-query",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Generate regular expression to match a text string that contains given words regardless of word order unless the words are double-quoted (a la google).",
   "main": "index.js",
-  "scripts": {
+  "directories": {
     "test": "test"
+  },
+  "dependencies": {
+    "lodash": "^4.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ApolloTang/smart-query.git"
   },
   "keywords": [
+    "search",
+    "string",
     "regEx",
-    "generator",
-    "search"
+    "regular",
+    "expression",
+    "generator"
   ],
-  "author": "Apollo Tang",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ApolloTang/smart-query/issues"
   },
-  "homepage": "https://github.com/ApolloTang/smart-query#readme",
-  "dependencies": {
-    "jquery": "^3.1.0",
-    "lodash": "^4.14.1"
-  }
+  "homepage": "https://github.com/ApolloTang/smart-query#readme"
 }
