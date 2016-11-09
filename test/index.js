@@ -72,13 +72,43 @@ stringToSearch = stringToSearch_standard;
 searchQuery = 'the $20.00';
 assert.equal(search(searchQuery, stringToSearch, note), false);
 
-note = '[11] [fail case] if there is only one word, take the search Quary litery, so it will not match en in french';
+note = '[11] [fail case] if there is only one word, take the search Quary litery, so it will NOT match en in french';
 stringToSearch = 'sadf french afdasdf';
 searchQuery = 'en ';
 assert.equal(search(searchQuery, stringToSearch, note), false);
 
-note = '[12] [fail case] if there is only one word, take the search Quary litery, so it will match en\\s';
+note = '[12] If there is only one word, take the search Quary litery, so it will match en\\s (spaces after)';
 stringToSearch = 'sadf en afdasdf';
-searchQuery = 'en ';
+searchQuery = 'en     ';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+note = '[13] [fail case] if there is only one word, take the search Quary litery, so it will match en\\s (spaces after)';
+stringToSearch = 'sadf en afdasdf';
+searchQuery = '   en';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+note = '[14] If there is only one word, take the search Quary litery, so it will match en\\s (spaces before and after)';
+stringToSearch = 'sadf en afdasdf';
+searchQuery = '   en     ';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+note = '[15] [fail case] if there is only one word, take the search Quary litery, so it will match en\\s (spaces before and after)';
+stringToSearch = 'sadf en afdasdf';
+searchQuery = '   en   ';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+note = '[16] If there is only one word, take the search Quary litery, so it will match en\\s (spaces before)';
+stringToSearch = 'sadf en afdasdf';
+searchQuery = '   en';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+note = '[17] [fail case] if there is only one word, take the search Quary litery, so it will match en\\s (spaces before)';
+stringToSearch = 'sadf en afdasdf';
+searchQuery = '   en';
+assert.equal(search(searchQuery, stringToSearch, note), true);
+
+note = '[18] if there is only one word, take the search Quary litery, so it will match en\\s (spaces before)';
+stringToSearch = '#534606 Interact Innovation CPM CAN Banner MOB FR Geo Fence EXT';
+searchQuery = '"FR GEO"  ';
 assert.equal(search(searchQuery, stringToSearch, note), true);
 console.log('=========================================== test done');
