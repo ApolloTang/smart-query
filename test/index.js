@@ -71,4 +71,14 @@ note = '[10] [fail case] contain regex char, un match string';
 stringToSearch = stringToSearch_standard;
 searchQuery = 'the $20.00';
 assert.equal(search(searchQuery, stringToSearch, note), false);
+
+note = '[11] [fail case] if there is only one word, take the search Quary litery, so it will not match en in french';
+stringToSearch = 'sadf french afdasdf';
+searchQuery = 'en ';
+assert.equal(search(searchQuery, stringToSearch, note), false);
+
+note = '[12] [fail case] if there is only one word, take the search Quary litery, so it will match en\\s';
+stringToSearch = 'sadf en afdasdf';
+searchQuery = 'en ';
+assert.equal(search(searchQuery, stringToSearch, note), true);
 console.log('=========================================== test done');
